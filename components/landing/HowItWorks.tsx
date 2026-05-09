@@ -519,6 +519,42 @@ export function HowItWorks() {
   const step = steps[currentStep];
 
   if (isMobile) return (
+    <section id="how" className="py-16 px-4">
+      <div className="text-center mb-10">
+        <span className="text-brand-400 font-medium text-xs uppercase tracking-widest">
+          Como funciona
+        </span>
+        <h2 className="font-display text-3xl font-bold mt-2">
+          Simples como deveria ser
+        </h2>
+      </div>
+      <div className="flex flex-col gap-5 max-w-sm mx-auto">
+        {steps.map((s) => (
+          <div
+            key={s.num}
+            className="bg-surface-900 border border-white/5 rounded-2xl p-5"
+            style={{ borderColor: `${s.color}25` }}
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{ background: `${s.color}20` }}
+              >
+                <s.icon className="w-5 h-5" style={{ color: s.color }} />
+              </div>
+              <div>
+                <p className="text-xs font-medium" style={{ color: s.color }}>{s.tag}</p>
+                <h3 className="font-display font-bold text-base">{s.title}</h3>
+              </div>
+            </div>
+            <p className="text-surface-400 text-sm leading-relaxed">{s.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+
+  return (
     <section
       ref={containerRef}
       id="how"
@@ -535,7 +571,6 @@ export function HowItWorks() {
               backgroundSize: "32px 32px",
             }}
           />
-          {/* Glow colorido que muda por step */}
           <motion.div
             animate={{ background: `radial-gradient(ellipse at 60% 50%, ${step.glow} 0%, transparent 60%)` }}
             transition={{ duration: 0.8 }}

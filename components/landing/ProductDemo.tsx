@@ -771,6 +771,41 @@ export function ProductDemo() {
   );
 
   if (isMobile) return (
+    <section className="py-16 px-4">
+      <div className="text-center mb-10">
+        <span className="text-brand-400 font-medium text-xs uppercase tracking-widest">
+          Veja o Bolix em ação
+        </span>
+        <h2 className="font-display text-3xl font-bold mt-2">
+          Do <span className="text-red-400">caos</span> ao{" "}
+          <span className="text-gradient">controle</span>
+        </h2>
+      </div>
+      <div className="flex flex-col gap-5 max-w-sm mx-auto">
+        {stages.map((stage) => (
+          <div
+            key={stage.id}
+            className="bg-surface-900 border border-white/5 rounded-2xl p-5"
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-8 h-8 rounded-xl bg-brand-500/20 flex items-center justify-center flex-shrink-0">
+                <span className="text-brand-400 text-xs font-bold">
+                  0{stage.id + 1}
+                </span>
+              </div>
+              <div>
+                <p className="text-xs text-brand-400 font-medium">{stage.subtitle}</p>
+                <h3 className="font-display font-bold text-sm">{stage.title}</h3>
+              </div>
+            </div>
+            <p className="text-surface-400 text-sm leading-relaxed">{stage.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+
+  return (
     <section
       ref={containerRef}
       className="relative"
@@ -781,7 +816,6 @@ export function ProductDemo() {
         {/* Background */}
         <div className="absolute inset-0 bg-surface-950">
           <div className="absolute inset-0 bg-gradient-mesh opacity-40" />
-          {/* Grid sutil */}
           <div
             className="absolute inset-0 opacity-[0.025]"
             style={{
@@ -844,7 +878,6 @@ export function ProductDemo() {
                     {stages[currentStage].description}
                   </p>
 
-                  {/* Destaque do stage */}
                   {currentStage === 0 && (
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
                       <AlertTriangle className="w-4 h-4" />
