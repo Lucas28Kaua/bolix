@@ -30,7 +30,7 @@ import {
   DollarSign,
   X,
 } from "lucide-react";
-
+import { useMobile } from "@/hooks/use-mobile";
 // ─── Tipos ───────────────────────────────────────────────────
 
 interface Stage {
@@ -747,6 +747,7 @@ function PhoneMockup({ stage }: { stage: number }) {
 // ─── Componente principal ──────────────────────────────────────
 
 export function ProductDemo() {
+  const isMobile = useMobile();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -769,7 +770,7 @@ export function ProductDemo() {
     { stiffness: 100, damping: 30 }
   );
 
-  return (
+  if (isMobile) return (
     <section
       ref={containerRef}
       className="relative"

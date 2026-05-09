@@ -27,7 +27,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import Link from "next/link";
-
+import { useMobile } from "@/hooks/use-mobile";
 // ─── Dados dos steps ──────────────────────────────────────────
 
 const steps = [
@@ -495,6 +495,7 @@ function SavingsVisual() {
 // ─── Componente principal ──────────────────────────────────────
 
 export function HowItWorks() {
+  const isMobile = useMobile();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -517,7 +518,7 @@ export function HowItWorks() {
 
   const step = steps[currentStep];
 
-  return (
+  if (isMobile) return (
     <section
       ref={containerRef}
       id="how"
